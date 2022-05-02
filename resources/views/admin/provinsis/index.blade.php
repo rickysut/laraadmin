@@ -41,7 +41,7 @@
                         {{ trans('cruds.provinsi.fields.lng') }}
                     </th>
                     <th>
-                        {{ trans('cruds.provinsi.fields.no_satker') }}
+                        {{ trans('cruds.provinsi.fields.kd_satker') }}
                     </th>
                     
                     <th width="120">
@@ -104,7 +104,7 @@
         { data: 'kd_bast', name: 'kd_bast' },
         { data: 'lat', name: 'lat' , class: 'text-right'},
         { data: 'lng', name: 'lng' , class: 'text-right'},
-        { data: 'no_satker', name: 'no_satker' },
+        { data: 'kd_satker_kd_satker', name: 'kd_satker.kd_satker' },
         { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
     orderCellsTop: true,

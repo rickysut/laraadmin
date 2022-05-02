@@ -61,14 +61,18 @@
                 <span class="help-block">{{ trans('cruds.provinsi.fields.lng_helper') }}</span>
             </div>
             <div class="form-group">
-                <label for="no_satker">{{ trans('cruds.provinsi.fields.no_satker') }}</label>
-                <input class="form-control {{ $errors->has('no_satker') ? 'is-invalid' : '' }}" type="text" name="no_satker" id="no_satker" value="{{ old('no_satker', $provinsi->no_satker) }}" >
-                @if($errors->has('no_satker'))
+                <label for="kd_satker">{{ trans('cruds.provinsi.fields.kd_satker') }}</label>
+                <select class="form-control select2 {{ $errors->has('kd_satker') ? 'is-invalid' : '' }}" name="kd_satker" id="kd_satker" required>
+                    @foreach($kd_satkers as $id => $entry)
+                        <option value="{{ $id }}" {{ (old('kd_satker') ? old('kd_satker') : $provinsi->kd_satker_id ?? '') == $id ? 'selected' : '' }}>{{ $id }} - {{ $entry }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('kd_satker'))
                     <div class="invalid-feedback">
-                        {{ $errors->first('no_satker') }}
+                        {{ $errors->first('kd_satker') }}
                     </div>
                 @endif
-                <span class="help-block">{{ trans('cruds.provinsi.fields.no_satker_helper') }}</span>
+                <span class="help-block">{{ trans('cruds.provinsi.fields.kd_satker_helper') }}</span>
             </div>
             
             <button class="btn btn-success" type="submit">

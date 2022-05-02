@@ -12,6 +12,7 @@ use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Yajra\DataTables\Facades\DataTables;
+use App\Models\Satker;
 
 class ProvinsiController extends Controller
 {
@@ -22,7 +23,7 @@ class ProvinsiController extends Controller
         abort_if(Gate::denies('provinsi_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         if ($request->ajax()) {
-            $query = Provinsi::query()->select(sprintf('%s.*', (new Provinsi())->table));
+            $query = Provinsi::with(['kd_satker'])->select(sprintf('%s.*', (new Provinsi())->table));
             $table = Datatables::of($query);
 
             $table->addColumn('placeholder', '&nbsp;');
@@ -58,13 +59,13 @@ class ProvinsiController extends Controller
             $table->editColumn('lng', function ($row) {
                 return $row->lng ? $row->lng : 0;
             });
-            $table->editColumn('no_satker', function ($row) {
-                return $row->no_satker ? $row->no_satker : '';
+            $table->addColumn('kd_satker_kd_satker', function ($row) {
+                return $row->kd_satker ? $row->kd_satker->kd_satker : '';
             });
             
 
-            $table->rawColumns(['actions', 'placeholder']);
-
+            $table->rawColumns(['actions', 'placeholder', 'kd_satker']);
+            
             return $table->make(true);
         }
 
@@ -75,7 +76,9 @@ class ProvinsiController extends Controller
     {
         abort_if(Gate::denies('provinsi_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return view('admin.provinsis.create');
+        $kd_satkers = Satker::pluck('nm_satker', 'kd_satker')->prepend(trans('global.pleaseSelect'), '');
+
+        return view('admin.provinsis.create', compact('kd_satkers'));
     }
 
     public function store(StoreProvinsiRequest $request)
@@ -89,7 +92,11 @@ class ProvinsiController extends Controller
     {
         abort_if(Gate::denies('provinsi_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return view('admin.provinsis.edit', compact('provinsi'));
+        $kd_satkers = Satker::pluck('nm_satker', 'kd_satker')->prepend(trans('global.pleaseSelect'), '');
+
+        $provinsi->load('kd_satker');
+
+        return view('admin.provinsis.edit', compact('kd_satkers', 'provinsi'));
     }
 
     public function update(UpdateProvinsiRequest $request, Provinsi $provinsi)
@@ -102,6 +109,8 @@ class ProvinsiController extends Controller
     public function show(Provinsi $provinsi)
     {
         abort_if(Gate::denies('provinsi_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $provinsi->load('kd_satker');
 
         return view('admin.provinsis.show', compact('provinsi'));
     }

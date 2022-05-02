@@ -173,8 +173,8 @@ return [
             'lat_helper'        => ' ',
             'lng'               => 'Longitude',
             'lng_helper'        => ' ',
-            'no_satker'         => 'No. Satker',
-            'no_satker_helper'  => ' ',
+            'kd_satker'         => 'Kode Satker',
+            'kd_satker_helper'  => ' ',
             
             'created_at'        => 'Created at',
             'created_at_helper' => ' ',

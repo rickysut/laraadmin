@@ -34,7 +34,7 @@ class Provinsi extends Model
         'kd_bast',
         'lat',
         'lng',
-        'no_satker',
+        'kd_satker_id',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -43,6 +43,11 @@ class Provinsi extends Model
     protected function serializeDate(DateTimeInterface $date)
     {
         return $date->format('Y-m-d H:i:s');
+    }
+
+    public function kd_satker()
+    {
+        return $this->belongsTo(Satker::class, 'kd_satker_id', 'kd_satker');
     }
 
     protected function getPrimary()

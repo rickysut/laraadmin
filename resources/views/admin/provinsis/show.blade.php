@@ -57,10 +57,10 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.provinsi.fields.no_satker') }}
+                            {{ trans('cruds.provinsi.fields.kd_satker') }}
                         </th>
                         <td>
-                            {{ $provinsi->no_satker }}
+                            {{ $provinsi->kd_satker_id.' - '.$provinsi->kd_satker->nm_satker }}
                         </td>
                     </tr>
                     
