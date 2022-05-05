@@ -26,11 +26,11 @@
 
                     </th>
                     <th>
+                        {{ trans('cruds.kabupaten.fields.id') }}
+                    </th>
+                    <th>
                         {{ trans('cruds.kecamatan.fields.kd_kab') }}
                     </th>
-                    <!--th>
-                        {{ trans('cruds.kabupaten.fields.nama_kab') }}
-                    </th-->
                     <th>
                         {{ trans('cruds.kecamatan.fields.kd_kec') }}
                     </th>
@@ -47,7 +47,7 @@
                         {{ trans('cruds.kecamatan.fields.lng') }}
                     </th>
                     <th width="120">
-                        &nbsp;
+                        {{ trans('global.actions') }}
                     </th>
                 </tr>
             </thead>
@@ -101,18 +101,24 @@
     aaSorting: [],
     ajax: "{{ route('admin.kecamatans.index') }}",
     columns: [
-      { data: 'placeholder', name: 'placeholder' },
-{ data: 'kd_kab_kd_kab', name: 'kd_kab.kd_kab' },
-//{ data: 'kd_kab.nama_kab', name: 'kd_kab.nama_kab' },
-{ data: 'kd_kec', name: 'kd_kec' },
-{ data: 'nm_kec', name: 'nm_kec' },
-{ data: 'kd_bast', name: 'kd_bast' },
-{ data: 'lat', name: 'lat', class: 'text-right'},
-{ data: 'lng', name: 'lng', class: 'text-right' },
-{ data: 'actions', name: '{{ trans('global.actions') }}' }
+        { data: 'placeholder', name: 'placeholder' },
+        { data: 'kd_kab_id', name: 'kd_kab.id' , visible: false},
+        { data: 'kd_kab_kd_kab', name: 'kd_kab.kd_kab', render: function (data, type, row) {
+            if ( type === 'display' ) {
+                var url = '{{ route("admin.kabupatens.show", ":id") }}';
+                url = url.replace(':id', row.kd_kab_id);
+                return "<a style='color:#9a0c0b;' href='"+url+"'>&#10140;</a>&nbsp&nbsp" + data;
+            }    
+        }},
+        { data: 'kd_kec', name: 'kd_kec' },
+        { data: 'nm_kec', name: 'nm_kec' },
+        { data: 'kd_bast', name: 'kd_bast' },
+        { data: 'lat', name: 'lat', class: 'text-right'},
+        { data: 'lng', name: 'lng', class: 'text-right' },
+        { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
     orderCellsTop: true,
-    order: [[ 1, 'asc' ]],
+    order: [[ 2, 'asc' ]],
     pageLength: 25,
   };
   let table = $('.datatable-Kecamatan').DataTable(dtOverrideGlobals);

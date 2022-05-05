@@ -43,9 +43,11 @@ class DesaController extends Controller
                 'row'
             ));
             });
-
+            $table->addColumn('kd_kec_id', function ($row) {
+                return $row->kd_kec ? $row->kd_kec->id  : '';
+            });
             $table->addColumn('kd_kec_kd_kec', function ($row) {
-                return $row->kd_kec ? $row->kd_kec->kd_kec.' - '.$row->kd_kec->nm_kec : '';
+                return $row->kd_kec ? $row->kd_kec->kd_kec.' - '.$row->kd_kec->nm_kec  : '';
             });
 
             /*$table->editColumn('kd_kec.nm_kec', function ($row) {

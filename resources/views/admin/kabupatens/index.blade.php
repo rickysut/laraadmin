@@ -25,6 +25,9 @@
                     <th width="10">
 
                     </th>
+                    <th >
+                        {{ trans('cruds.provinsi.fields.id') }} 
+                    </th>
                     <th>
                         {{ trans('cruds.kabupaten.fields.kd_prop') }}
                     </th>
@@ -48,7 +51,7 @@
                     </th>
                     
                     <th width="120">
-                        &nbsp;
+                        {{ trans('global.actions') }}
                     </th>
                 </tr>
             </thead>
@@ -103,7 +106,14 @@
     ajax: "{{ route('admin.kabupatens.index') }}",
     columns: [
         { data: 'placeholder', name: 'placeholder' },
-        { data: 'kd_prop_kd_prop', name: 'kd_prop.kd_prop' },
+        { data: 'kd_prop_id', name: 'kd_prop.id', visible: false },
+        { data: 'kd_prop_kd_prop', name: 'kd_prop.kd_prop' , render: function (data, type, row) {
+            if ( type === 'display' ) {
+                var url = '{{ route("admin.provinsis.show", ":id") }}';
+                url = url.replace(':id', row.kd_prop_id);
+                return "<a style='color:#9a0c0b;' href='"+url+"'>&#10140;</a>&nbsp&nbsp" + data;
+            }    
+        }},
         //{ data: 'kd_prop.nm_prop', name: 'kd_prop.nm_prop' },
         { data: 'kd_kab', name: 'kd_kab' },
         { data: 'nama_kab', name: 'nama_kab' },
@@ -113,7 +123,7 @@
         { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
     orderCellsTop: true,
-    order: [[ 1, 'asc' ]],
+    order: [[ 2, 'asc' ]],
     pageLength: 25,
   };
   let table = $('.datatable-Kabupaten').DataTable(dtOverrideGlobals);

@@ -44,14 +44,16 @@ class KabupatenController extends Controller
             ));
             });
 
+            $table->editColumn('kd_prop_id', function ($row) {
+                return $row->kd_prop ? $row->kd_prop->id  : '';
+            });
+
             $table->addColumn('kd_prop_kd_prop', function ($row) {
                 return $row->kd_prop ? $row->kd_prop->kd_prop.' - '.$row->kd_prop->nm_prop : '';
             });
 
-            /*$table->editColumn('kd_prop.nm_prop', function ($row) {
-                return $row->kd_prop ? (is_string($row->kd_prop) ? $row->kd_prop : $row->kd_prop->nm_prop) : '';
-            });
-            */
+            
+            
             $table->editColumn('kd_kab', function ($row) {
                 return $row->kd_kab ? $row->kd_kab : '';
             });

@@ -31,7 +31,7 @@
                         {{ trans('cruds.permission.fields.grp_title') }}
                     </th>
                     <th>
-                        &nbsp;
+                        {{ trans('global.actions') }}
                     </th>
                 </tr>
             </thead>

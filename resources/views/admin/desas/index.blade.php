@@ -1,5 +1,13 @@
 @extends('layouts.admin')
 @section('content')
+<style>
+    table.dataTable td > span {
+        margin-left: 0.2em;
+        opacity: 1;
+        float: left;
+        cursor: pointer;
+    }
+</style>
 @can('desa_create')
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
@@ -26,6 +34,9 @@
 
                     </th>
                     <th>
+                        {{ trans('cruds.kecamatan.fields.id') }} 
+                    </th>
+                    <th>
                         {{ trans('cruds.desa.fields.kd_kec') }}
                     </th>
                     <!--th>
@@ -47,7 +58,7 @@
                         {{ trans('cruds.desa.fields.lng') }}
                     </th>
                     <th width="120">
-                        &nbsp;
+                        {{ trans('global.actions') }}
                     </th>
                 </tr>
             </thead>
@@ -92,7 +103,7 @@
   }
   dtButtons.push(deleteButton)
 @endcan
-
+    
   let dtOverrideGlobals = {
     buttons: dtButtons,
     processing: true,
@@ -102,20 +113,29 @@
     ajax: "{{ route('admin.desas.index') }}",
     columns: [
         { data: 'placeholder', name: 'placeholder' },
-        { data: 'kd_kec_kd_kec', name: 'kd_kec.kd_kec' },
+        { data: 'kd_kec_id', name: 'kd_kec.id', visible: false },
+        { data: 'kd_kec_kd_kec', name: 'kd_kec.kd_kec' , render: function (data, type, row) {
+            if ( type === 'display' ) {
+                var url = '{{ route("admin.kecamatans.show", ":id") }}';
+                url = url.replace(':id', row.kd_kec_id);
+                return "<a style='color:#9a0c0b;' href='"+url+"'>&#10140;</a>&nbsp&nbsp" + data;
+            }    
+        }},
         //{ data: 'kd_kec.nm_kec', name: 'kd_kec.nm_kec' },
         { data: 'kd_desa', name: 'kd_desa' },
         { data: 'nm_desa', name: 'nm_desa' },
-        { data: 'kd_bast', name: 'kd_bast' },
+        { data: 'kd_bast', name: 'kd_bast' },   
         { data: 'lat', name: 'lat' , class: 'text-right'},
         { data: 'lng', name: 'lng' , class: 'text-right'},
         { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
     orderCellsTop: true,
-    order: [[ 1, 'asc' ]],
+    order: [[ 2, 'asc' ]],
     pageLength: 25,
   };
-  let table = $('.datatable-Desa').DataTable(dtOverrideGlobals);
+  
+  table = $('.datatable-Desa').DataTable(dtOverrideGlobals);
+  
   $('a[data-toggle="tab"]').on('shown.bs.tab click', function(e){
       $($.fn.dataTable.tables(true)).DataTable()
           .columns.adjust();

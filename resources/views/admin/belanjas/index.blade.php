@@ -38,7 +38,7 @@
                         {{ trans('cruds.belanja.fields.realisasi') }}
                     </th>
                     <th>
-                        &nbsp;
+                        {{ trans('global.actions') }}
                     </th>
                 </tr>
             </thead>

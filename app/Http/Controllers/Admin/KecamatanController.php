@@ -44,15 +44,16 @@ class KecamatanController extends Controller
             ));
             });
 
+            
+            $table->editColumn('kd_kab_id', function ($row) {
+                return $row->kd_kab ? $row->kd_kab->id : '';
+            });
+            
             $table->addColumn('kd_kab_kd_kab', function ($row) {
                 return $row->kd_kab ? $row->kd_kab->kd_kab.' - '.$row->kd_kab->nama_kab : '';
             });
 
-            /*
-            $table->editColumn('kd_kab.nama_kab', function ($row) {
-                return $row->kd_kab ? (is_string($row->kd_kab) ? $row->kd_kab : $row->kd_kab->nama_kab) : '';
-            });
-            */
+            
             $table->editColumn('kd_kec', function ($row) {
                 return $row->kd_kec ? $row->kd_kec : '';
             });

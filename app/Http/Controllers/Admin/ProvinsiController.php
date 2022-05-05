@@ -62,7 +62,9 @@ class ProvinsiController extends Controller
             $table->addColumn('kd_satker_kd_satker', function ($row) {
                 return $row->kd_satker ? $row->kd_satker->kd_satker : '';
             });
-            
+            $table->addColumn('kd_satker_id', function ($row) {
+                return $row->kd_satker ? $row->kd_satker->id : '';
+            });
 
             $table->rawColumns(['actions', 'placeholder', 'kd_satker']);
             

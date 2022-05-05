@@ -44,7 +44,7 @@
                         {{ trans('cruds.backdateBanpem.fields.nom_realisasi') }}
                     </th>
                     <th width="120">
-                        &nbsp;
+                        {{ trans('global.actions') }}
                     </th>
                 </tr>
             </thead>

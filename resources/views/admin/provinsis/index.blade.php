@@ -43,9 +43,11 @@
                     <th>
                         {{ trans('cruds.provinsi.fields.kd_satker') }}
                     </th>
-                    
+                    <th>
+                        {{ trans('cruds.satker.fields.id') }}
+                    </th>
                     <th width="120">
-                        &nbsp;
+                        {{ trans('global.actions') }}
                     </th>
                 </tr>
             </thead>
@@ -104,7 +106,14 @@
         { data: 'kd_bast', name: 'kd_bast' },
         { data: 'lat', name: 'lat' , class: 'text-right'},
         { data: 'lng', name: 'lng' , class: 'text-right'},
-        { data: 'kd_satker_kd_satker', name: 'kd_satker.kd_satker' },
+        { data: 'kd_satker_kd_satker', name: 'kd_satker.kd_satker', render: function (data, type, row) {
+            if ( type === 'display' ) {
+                var url = '{{ route("admin.satkers.show", ":id") }}';
+                url = url.replace(':id', row.kd_satker_id);
+                return "<a style='color:#9a0c0b;' href='"+url+"'>&#10140;</a>&nbsp&nbsp" + data;
+            }    
+        }},
+        { data: 'kd_satker_id', name: 'kd_satker.id' ,  visible: false},
         { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
     orderCellsTop: true,
