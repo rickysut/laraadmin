@@ -65,7 +65,7 @@ class PermissionsController extends Controller
 
             return $table->make(true);
         }
-
+        
         return view('admin.permissions.index');
     }
 

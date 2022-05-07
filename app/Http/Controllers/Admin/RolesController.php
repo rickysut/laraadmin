@@ -57,8 +57,8 @@ class RolesController extends Controller
 
             return $table->make(true);
         }
-
-        return view('admin.roles.index');
+        $grpTitle = trans('cruds');
+        return view('admin.roles.index', compact('grpTitle'));
     }
 
     public function create()
@@ -82,11 +82,12 @@ class RolesController extends Controller
     {
         abort_if(Gate::denies('role_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $permissions = Permission::pluck('title', 'id');
-
+        $permissions = Permission::pluck('title','id' );
+        $permi = Permission::pluck('perm_type','grp_title','id' );
         $role->load('permissions');
+        $grpTitle = trans('cruds');
 
-        return view('admin.roles.edit', compact('permissions', 'role'));
+        return view('admin.roles.edit', compact('permissions', 'role', 'grpTitle', 'permi'));
     }
 
     public function update(UpdateRoleRequest $request, Role $role)

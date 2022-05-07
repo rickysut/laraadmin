@@ -5,7 +5,83 @@
     <div class="card-header">
         {{ trans('global.edit') }} {{ trans('cruds.role.title_singular') }}
     </div>
+    <div class="card-body">
+        <table class="table table-bordered table-striped table-hover ajaxTable datatable datatable-Role1">
+            <thead>
+                <tr>
+                    <th>
+                        {{ trans('cruds.permission.title') }}
+                    </th>
+                    <th width="20" class="text-center">
+                        acess
+                    </th>
+                    <th width="20" class="text-center">
+                        create
+                    </th>
+                    <th width="20" class="text-center">
+                        show
+                    </th>
+                    <th width="20" class="text-center">
+                        edit
+                    </th>
+                    <th width="20" class="text-center">
+                        delete
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                
+                @foreach($grpTitle as $id=>$label )
+                    
+                    <tr>
+                        <td>
+                            @if ($label['is_parent'] == "1") 
+                                <strong>{{ $label['title'] }} 
+                                    @foreach($permi as $id => $permission)
+                                        @if ($role->permissions->contains($id))
+                                            {{ $permission }}
+                                            @break
+                                        @endif
 
+                                    @endforeach
+                                </strong>
+                            @else
+                                &nbsp;&nbsp;&nbsp;{{ $label['title'] }}
+                            @endif
+                            
+                        </td>
+                        <td style="padding-left: 44px;">
+                            @if ($label['can_access'] == "1")
+                                <input class="form-check-input" type="checkbox" id="switch1">    
+                            @endif
+                        </td>
+                        <td style="padding-left: 44px;">
+                            @if ($label['can_create'] == "1")
+                                <input class="form-check-input" type="checkbox" id="switch2">
+                            @endif
+                        </td>
+                        <td style="padding-left: 44px;">
+                            @if ($label['can_view'] == "1")
+                                <input class="form-check-input" type="checkbox" id="switch3">
+                            @endif
+                        </td>
+                        <td style="padding-left: 44px;">
+                            @if ($label['can_edit'] == "1")
+                                <input class="form-check-input" type="checkbox" id="switch4">
+                            @endif
+                        </td>
+                        <td style="padding-left: 44px;">
+                            @if ($label['can_delete'] == "1")
+                                <input class="form-check-input" type="checkbox" id="switch5">
+                            @endif
+                        </td>
+                    </tr>
+                @endforeach
+                
+            </tbody>
+        </table>
+    </div>
+    
     <div class="card-body">
         <form method="POST" action="{{ route("admin.roles.update", [$role->id]) }}" enctype="multipart/form-data">
             @method('PUT')

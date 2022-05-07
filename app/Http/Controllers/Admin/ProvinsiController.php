@@ -78,7 +78,7 @@ class ProvinsiController extends Controller
     {
         abort_if(Gate::denies('provinsi_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $kd_satkers = Satker::pluck('nm_satker', 'kd_satker')->prepend(trans('global.pleaseSelect'), '');
+        $kd_satkers = Satker::where('status', 1)->pluck('nm_satker', 'kd_satker')->prepend(trans('global.pleaseSelect'), '');
 
         return view('admin.provinsis.create', compact('kd_satkers'));
     }

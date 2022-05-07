@@ -13,7 +13,8 @@
     <div class="card-header">
         {{ trans('cruds.role.title_singular') }} {{ trans('global.list') }}
     </div>
-
+    
+      
     <div class="card-body">
         <table class=" table table-bordered table-striped table-hover ajaxTable datatable datatable-Role">
             <thead>
