@@ -107,7 +107,13 @@
             if ( type === 'display' ) {
                 var url = '{{ route("admin.kabupatens.show", ":id") }}';
                 url = url.replace(':id', row.kd_kab_id);
-                return "<a style='color:#9a0c0b;' href='"+url+"'>&#10140;</a>&nbsp&nbsp" + data;
+                @can('kabupaten_show')
+                    return "<a style='color:#9a0c0b;' href='"+url+"'>&#10140;</a>&nbsp&nbsp" + data;    
+                @endcan
+                @cannot('kabupaten_show')
+                    return data;
+                @endcannot
+                
             }    
         }},
         { data: 'kd_kec', name: 'kd_kec' },

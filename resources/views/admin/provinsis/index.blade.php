@@ -110,7 +110,13 @@
             if ( type === 'display' ) {
                 var url = '{{ route("admin.satkers.show", ":id") }}';
                 url = url.replace(':id', row.kd_satker_id);
-                return "<a style='color:#9a0c0b;' href='"+url+"'>&#10140;</a>&nbsp&nbsp" + data;
+                @can('satker_show')
+                    return "<a style='color:#9a0c0b;' href='"+url+"'>&#10140;</a>&nbsp&nbsp" + data;    
+                @endcan
+                @cannot('satker_show')
+                    return data;
+                @endcannot
+                
             }    
         }},
         { data: 'kd_satker_id', name: 'kd_satker.id' ,  visible: false},

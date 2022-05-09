@@ -65,16 +65,19 @@ class RolesController extends Controller
     {
         abort_if(Gate::denies('role_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $permissions = Permission::pluck('title', 'id');
+        $permissions = Permission::pluck('title','id' );
+        $permi = Permission::all();
+        $grpTitle = trans('cruds');
 
-        return view('admin.roles.create', compact('permissions'));
+        return view('admin.roles.create', compact('permissions',  'grpTitle', 'permi'));
     }
 
     public function store(StoreRoleRequest $request)
     {
         $role = Role::create($request->all());
         $role->permissions()->sync($request->input('permissions', []));
-
+        
+        session()->flash('message', trans('global.create_success'));
         return redirect()->route('admin.roles.index');
     }
 
@@ -83,17 +86,19 @@ class RolesController extends Controller
         abort_if(Gate::denies('role_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $permissions = Permission::pluck('title','id' );
-        $permi = Permission::pluck('perm_type','grp_title','id' );
+        $permi = Permission::all();
         $role->load('permissions');
         $grpTitle = trans('cruds');
-
-        return view('admin.roles.edit', compact('permissions', 'role', 'grpTitle', 'permi'));
+        $mnfound = false;
+        return view('admin.roles.edit', compact('permissions', 'role', 'grpTitle', 'permi', 'mnfound'));
     }
 
     public function update(UpdateRoleRequest $request, Role $role)
     {
+        //dd($request->all());
         $role->update($request->all());
         $role->permissions()->sync($request->input('permissions', []));
+        session()->flash('message', trans('global.update_success'));
 
         return redirect()->route('admin.roles.index');
     }

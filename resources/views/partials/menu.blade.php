@@ -12,14 +12,16 @@
 
             </select>
         </li>
-        <li class="c-sidebar-nav-item">
-            <a href="{{ route("admin.home") }}" class="c-sidebar-nav-link">
-                <i class="c-sidebar-nav-icon fas fa-fw fa-tachometer-alt">
+        @can('dashboard_access')
+            <li class="c-sidebar-nav-item">
+                <a href="{{ route("admin.home") }}" class="c-sidebar-nav-link">
+                    <i class="c-sidebar-nav-icon fas fa-fw fa-tachometer-alt">
 
-                </i>
-                {{ trans('global.dashboard') }}
-            </a>
-        </li>
+                    </i>
+                    {{ trans('global.dashboard') }}
+                </a>
+            </li>
+        @endcan
         @can('app_connection_access')
             <li class="c-sidebar-nav-dropdown {{ request()->is("admin/banpems*") ? "c-show" : "" }} {{ request()->is("admin/pagus*") ? "c-show" : "" }}">
                 <a class="c-sidebar-nav-dropdown-toggle" href="#">

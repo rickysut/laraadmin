@@ -111,7 +111,12 @@
             if ( type === 'display' ) {
                 var url = '{{ route("admin.provinsis.show", ":id") }}';
                 url = url.replace(':id', row.kd_prop_id);
-                return "<a style='color:#9a0c0b;' href='"+url+"'>&#10140;</a>&nbsp&nbsp" + data;
+                @can('provinsi_show')
+                    return "<a style='color:#9a0c0b;' href='"+url+"'>&#10140;</a>&nbsp&nbsp" + data;
+                @endcan
+                @cannot('provinsi_show')
+                    return data;
+                @endcannot
             }    
         }},
         //{ data: 'kd_prop.nm_prop', name: 'kd_prop.nm_prop' },

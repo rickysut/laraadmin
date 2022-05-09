@@ -118,7 +118,13 @@
             if ( type === 'display' ) {
                 var url = '{{ route("admin.kecamatans.show", ":id") }}';
                 url = url.replace(':id', row.kd_kec_id);
-                return "<a style='color:#9a0c0b;' href='"+url+"'>&#10140;</a>&nbsp&nbsp" + data;
+                @can('kecamatan_show')
+                    return "<a style='color:#9a0c0b;' href='"+url+"'>&#10140;</a>&nbsp&nbsp" + data;    
+                @endcan
+                @cannot('kecamatan_show')
+                    return data;
+                @endcannot
+                
             }    
         }},
         //{ data: 'kd_kec.nm_kec', name: 'kd_kec.nm_kec' },
