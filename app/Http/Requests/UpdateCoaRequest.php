@@ -2,31 +2,30 @@
 
 namespace App\Http\Requests;
 
-use App\Models\Role;
+use App\Models\Coa;
 use Gate;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Response;
 
-class StoreRoleRequest extends FormRequest
+class UpdateCoaRequest extends FormRequest
 {
     public function authorize()
     {
-        return Gate::allows('role_create');
+        return Gate::allows('coa_edit');
     }
 
     public function rules()
     {
         return [
-            'title' => [
+            'coa_code' => [
+                'nullable',
+                'integer',
+                'min:-2147483648',
+                'max:2147483647',
+            ],
+            'coa_name' => [
                 'string',
                 'required',
-            ],
-            'permissions.*' => [
-                'integer',
-            ],
-            'permissions' => [
-                'required',
-                'array',
             ],
         ];
     }

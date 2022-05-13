@@ -8,8 +8,13 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class HomeController
-{
+{   
     public function index()
+    {
+        return view('home1');  
+    }
+
+    public function index_old()
     {
         $ymax = DB::select(DB::raw("select max(tahun) as mxthn from belanjas"));
         $dtYear=$ymax[0]->mxthn;

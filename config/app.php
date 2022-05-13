@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Simevi'),
+    'name' => env('APP_NAME', 'Keytech'),
 
     /*
     |--------------------------------------------------------------------------
@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost'),
+    'url' => env('APP_URL', 'http://keytech.test'),
 
     'asset_url' => env('ASSET_URL', null),
 

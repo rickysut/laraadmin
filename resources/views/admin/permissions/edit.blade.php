@@ -25,7 +25,7 @@
                 <select class="form-control {{ $errors->has('perm_type') ? 'is-invalid' : '' }}" name="perm_type" id="perm_type" required>
                     <option value disabled {{ old('perm_type', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
                     @foreach(App\Models\Permission::PERM_TYPE_SELECT as $key => $label)
-                        <option value="{{ $key }}" {{ old('perm_type', $permission->perm_type) === $key ? 'selected' : '' }}>{{ $label }}</option>
+                        <option value="{{ $key }}" {{ old('perm_type', $permission->perm_type) == $key ? 'selected' : '' }}>{{ $label }}</option>
                     @endforeach
                 </select>
                 @if($errors->has('perm_type'))

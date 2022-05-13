@@ -29,53 +29,19 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     // Audit Logs
     Route::resource('audit-logs', 'AuditLogsController', ['except' => ['create', 'store', 'edit', 'update', 'destroy']]);
 
-    // Backdate Banpem
-    Route::delete('backdate-banpems/destroy', 'BackdateBanpemController@massDestroy')->name('backdate-banpems.massDestroy');
-    Route::post('backdate-banpems/parse-csv-import', 'BackdateBanpemController@parseCsvImport')->name('backdate-banpems.parseCsvImport');
-    Route::post('backdate-banpems/process-csv-import', 'BackdateBanpemController@processCsvImport')->name('backdate-banpems.processCsvImport');
-    Route::resource('backdate-banpems', 'BackdateBanpemController');
+    // Partner
+    Route::delete('partners/destroy', 'PartnerController@massDestroy')->name('partners.massDestroy');
+    Route::post('partners/parse-csv-import', 'PartnerController@parseCsvImport')->name('partners.parseCsvImport');
+    Route::post('partners/process-csv-import', 'PartnerController@processCsvImport')->name('partners.processCsvImport');
+    Route::resource('partners', 'PartnerController', ['except' => ['show']]);
 
-    // Akun
-    Route::delete('akuns/destroy', 'AkunController@massDestroy')->name('akuns.massDestroy');
-    Route::post('akuns/parse-csv-import', 'AkunController@parseCsvImport')->name('akuns.parseCsvImport');
-    Route::post('akuns/process-csv-import', 'AkunController@processCsvImport')->name('akuns.processCsvImport');
-    Route::resource('akuns', 'AkunController');
+    // Coa
+    Route::delete('coas/destroy', 'CoaController@massDestroy')->name('coas.massDestroy');
+    Route::resource('coas', 'CoaController');
 
-    // Provinsi
-    Route::delete('provinsis/destroy', 'ProvinsiController@massDestroy')->name('provinsis.massDestroy');
-    Route::post('provinsis/parse-csv-import', 'ProvinsiController@parseCsvImport')->name('provinsis.parseCsvImport');
-    Route::post('provinsis/process-csv-import', 'ProvinsiController@processCsvImport')->name('provinsis.processCsvImport');
-    Route::resource('provinsis', 'ProvinsiController');
-
-    // Kabupaten
-    Route::delete('kabupatens/destroy', 'KabupatenController@massDestroy')->name('kabupatens.massDestroy');
-    Route::post('kabupatens/parse-csv-import', 'KabupatenController@parseCsvImport')->name('kabupatens.parseCsvImport');
-    Route::post('kabupatens/process-csv-import', 'KabupatenController@processCsvImport')->name('kabupatens.processCsvImport');
-    Route::resource('kabupatens', 'KabupatenController');
-
-    // Kecamatan
-    Route::delete('kecamatans/destroy', 'KecamatanController@massDestroy')->name('kecamatans.massDestroy');
-    Route::post('kecamatans/parse-csv-import', 'KecamatanController@parseCsvImport')->name('kecamatans.parseCsvImport');
-    Route::post('kecamatans/process-csv-import', 'KecamatanController@processCsvImport')->name('kecamatans.processCsvImport');
-    Route::resource('kecamatans', 'KecamatanController');
-
-    // Desa
-    Route::delete('desas/destroy', 'DesaController@massDestroy')->name('desas.massDestroy');
-    Route::post('desas/parse-csv-import', 'DesaController@parseCsvImport')->name('desas.parseCsvImport');
-    Route::post('desas/process-csv-import', 'DesaController@processCsvImport')->name('desas.processCsvImport');
-    Route::resource('desas', 'DesaController');
-
-    // Belanja
-    Route::delete('belanjas/destroy', 'BelanjaController@massDestroy')->name('belanjas.massDestroy');
-    Route::post('belanjas/parse-csv-import', 'BelanjaController@parseCsvImport')->name('belanjas.parseCsvImport');
-    Route::post('belanjas/process-csv-import', 'BelanjaController@processCsvImport')->name('belanjas.processCsvImport');
-    Route::resource('belanjas', 'BelanjaController');
-
-    // Satker
-    Route::delete('satkers/destroy', 'SatkerController@massDestroy')->name('satkers.massDestroy');
-    Route::post('satkers/parse-csv-import', 'SatkerController@parseCsvImport')->name('satkers.parseCsvImport');
-    Route::post('satkers/process-csv-import', 'SatkerController@processCsvImport')->name('satkers.processCsvImport');
-    Route::resource('satkers', 'SatkerController');
+    // Settings
+    Route::delete('settings/destroy', 'SettingsController@massDestroy')->name('settings.massDestroy');
+    Route::resource('settings', 'SettingsController');
     
     Route::get('global-search', 'GlobalSearchController@search')->name('globalSearch');
     Route::get('messenger', 'MessengerController@index')->name('messenger.index');

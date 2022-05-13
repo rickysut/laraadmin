@@ -21,12 +21,6 @@ class UpdatePermissionRequest extends FormRequest
                 'string',
                 'required',
             ],
-            'perm_type' => [
-                'required',
-            ],
-            'grp_title' => [
-                'required',
-            ],
         ];
     }
 }
