@@ -16,8 +16,7 @@ class AuditLogsController extends Controller
         abort_if(Gate::denies('audit_log_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         if ($request->ajax()) {
-            //$query = AuditLog::query()->select(sprintf('%s.*', (new AuditLog())->table));
-            $query = AuditLog::with(['user_info'])->select(sprintf('%s.*', (new AuditLog())->table));
+            $query = AuditLog::query()->select(sprintf('%s.*', (new AuditLog())->table));
             $table = Datatables::of($query);
 
             $table->addColumn('placeholder', '&nbsp;');
@@ -51,8 +50,7 @@ class AuditLogsController extends Controller
                 return $row->subject_type ? $row->subject_type : '';
             });
             $table->editColumn('user_id', function ($row) {
-                //return $row->user_id ? $row->user_id : '';
-                return $row->user_id ? $row->user_info->name : '';
+                return $row->user_id ? $row->user_id : '';
             });
             $table->editColumn('host', function ($row) {
                 return $row->host ? $row->host : '';
@@ -62,16 +60,14 @@ class AuditLogsController extends Controller
 
             return $table->make(true);
         }
-        $breadcrumb = trans('cruds.auditLog.title_singular') ." ". trans('global.list');
-        return view('admin.auditLogs.index', compact('breadcrumb'));
+
+        return view('admin.auditLogs.index');
     }
 
     public function show(AuditLog $auditLog)
     {
         abort_if(Gate::denies('audit_log_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-        $auditLog->load('user_info');
-        $breadcrumb = "View Audit Log";
-        $breadcrumb =trans('global.show')  ." ". trans('cruds.auditLog.title_singular'); 
-        return view('admin.auditLogs.show', compact('auditLog', 'breadcrumb'));
+
+        return view('admin.auditLogs.show', compact('auditLog'));
     }
 }

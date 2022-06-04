@@ -2,9 +2,9 @@
 @section('content')
 
 <div class="card">
-    <div class="card-header">
+    <!--div class="card-header">
         {{ trans('global.show') }} {{ trans('cruds.auditLog.title') }}
-    </div>
+    </div-->
 
     <div class="card-body">
         <div class="form-group">
@@ -52,7 +52,7 @@
                             {{ trans('cruds.auditLog.fields.user_id') }}
                         </th>
                         <td>
-                            {{ $auditLog->user_id }}
+                            {{ $auditLog->user_info->name }}
                         </td>
                     </tr>
                     <tr>

@@ -109,7 +109,7 @@ return [
         'title'          => 'Audit Logs',
         'title_singular' => 'Audit Log',
         'is_parent'      => '0',
-        'can_view'       => '0',
+        'can_view'       => '1',
         'can_edit'       => '0', 
         'can_delete'     => '0',  
         'can_access'     => '1', 
