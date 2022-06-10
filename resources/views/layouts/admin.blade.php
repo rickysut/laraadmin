@@ -111,7 +111,7 @@
     <script src="{{ asset('js/bootstrap/bootstrap-datetimepicker.min.js') }}"></script>
     <script src="{{ asset('js/select/select2.full.min.js') }}"></script>
     <script src="{{ asset('js/dropzone/dropzone.min.js') }}"></script>
-    <script src="{{ asset('js/main.js') }}"></script>
+    <script src="{{ asset('js/main.js?v=1.01') }}"></script>
     <script>
         $(function() {
   let copyButtonTrans = '{{ trans('global.datatables.copy') }}'
