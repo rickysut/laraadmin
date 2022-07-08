@@ -22,19 +22,20 @@
     <link href="{{ asset('css/ajax/dropzone.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/ajax/perfect-scrollbar.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet" />
+    <!--link href="{ { asset('css/app.css') }}" rel="stylesheet"/-->
     
     @yield('styles')
 </head>
 
 <body class="c-app">
     @include('partials.menu')
-    <div class="c-wrapper">
-        <header class="c-header c-header-fixed px-3">
+    <div class="c-wrapper" >
+        <header class="c-header c-header-fixed px-2">
             <button class="c-header-toggler c-class-toggler d-lg-none mfe-auto" type="button" data-target="#sidebar" data-class="c-sidebar-show">
                 <i class="fas fa-fw fa-bars"></i>
             </button>
 
-            <a class="c-header-brand d-lg-none" href="#">{{ trans('panel.site_title') }}</a>
+            <a class="c-header-brand d-lg-none text-xl" href="#">{{ trans('panel.site_title') }}</a>
 
             <button class="c-header-toggler mfs-3 d-md-down-none" type="button" responsive="true">
                 <i class="fas fa-fw fa-bars"></i>
@@ -43,12 +44,12 @@
             <ul class="c-header-nav ml-auto">
                 @if(count(config('panel.available_languages', [])) > 1)
                     <li class="c-header-nav-item dropdown d-md-down-none">
-                        <a class="c-header-nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                        <a class="c-header-nav-link font-bold" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                             {{ strtoupper(app()->getLocale()) }}
                         </a>
-                        <div class="dropdown-menu dropdown-menu-right">
+                        <div class="dropdown-menu dropdown-menu-right bg-amber-200 text-orange-400">
                             @foreach(config('panel.available_languages') as $langLocale => $langName)
-                                <a class="dropdown-item" href="{{ url()->current() }}?change_language={{ $langLocale }}">{{ strtoupper($langLocale) }} ({{ $langName }})</a>
+                                <a class="dropdown-item text-orange-400 hover:text-white hover:bg-red-800" href="{{ url()->current() }}?change_language={{ $langLocale }}">{{ strtoupper($langLocale) }} ({{ $langName }})</a>
                             @endforeach
                         </div>
                     </li>

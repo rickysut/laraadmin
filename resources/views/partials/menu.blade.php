@@ -1,7 +1,7 @@
-<div id="sidebar" class="c-sidebar c-sidebar-fixed c-sidebar-lg-show">
+<div id="sidebar" class="c-sidebar c-sidebar-fixed c-sidebar-lg-show bg-gradient-to-b from-blue-800 to-slate-800">
 
-    <div class="c-sidebar-brand d-md-down-none">
-        <a class="c-sidebar-brand-full h4" href="/">
+    <div class="c-sidebar-brand d-md-down-none ">
+        <a class="c-sidebar-brand-full h4 " href="/">
             {{ trans('panel.site_title') }}
         </a>
     </div>
