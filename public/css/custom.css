@@ -28,14 +28,12 @@ table.dataTable tbody th.select-checkbox::after {
 .dt-buttons .btn {
     margin-left: 0.333em;
     border-radius: 0;
-    border-radius: 0.5rem;
 }
 
 .table.datatable {
     box-sizing: border-box;
     border-collapse: collapse;
 }
-
 
 table.dataTable thead th {
     border-bottom: 2px solid #c8ced3;
