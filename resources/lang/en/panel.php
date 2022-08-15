@@ -1,5 +1,5 @@
 <?php
 
 return [
-    'site_title' => 'Keytech',
+    'site_title' => 'Smartadmin',
 ];
