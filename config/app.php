@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Keytech'),
+    'name' => env('APP_NAME', 'admin'),
 
     /*
     |--------------------------------------------------------------------------
@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://keytech.test'),
+    'url' => env('APP_URL', 'http://laraadmin.test'),
 
     'asset_url' => env('ASSET_URL', null),
 
