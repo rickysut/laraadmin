@@ -1,10 +1,10 @@
 @extends('layouts.admin')
 @section('content')
-
+@include('partials.subheader')
 <div class="card">
-    <div class="card-header">
-        {{ trans('global.edit') }} {{ trans('cruds.permission.title_singular') }}
-    </div>
+    <!--div class="card-header">
+        {{-- {{ trans('global.edit') }} {{ trans('cruds.permission.title_singular') }} --}}
+    </div-->
 
     <div class="card-body">
         <form method="POST" action="{{ route("admin.permissions.update", [$permission->id]) }}" enctype="multipart/form-data">

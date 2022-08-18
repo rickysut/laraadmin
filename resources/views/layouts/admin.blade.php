@@ -246,9 +246,7 @@ License: You must have a valid license purchased only from wrapbootstrap.com (li
 					"<'row'<'col-sm-12 col-md-2'l><'col-sm-12 col-md-8 d-flex'B><'col-sm-12 col-md-2 d-flex justify-content-end'f>>" +
 					"<'row'<'col-sm-12 col-md-12'tr>>" +
 					"<'row'<'col-sm-12 col-md-6'i><'col-sm-12 col-md-6'p>>",
-					/*dom: "<'row align-items-center mb-3 justify-content-start'<'col-sm-12 col-md-2  align-items-center justify-content-start'f><'col-sm-12 col-md-3 d-flex align-items-center justify-content-end 'l><'col-sm-12 col-md-7 d-flex align-items-center justify-content-end'B>>" +
-		"<'row style="width:100%"'<'col-sm-12 col-md-12't>>" +
-		"<'row align-items-center'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",*/
+					
 					buttons: [
 					{
 						extend: 'selectAll',

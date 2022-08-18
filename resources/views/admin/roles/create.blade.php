@@ -1,10 +1,10 @@
 @extends('layouts.admin')
 @section('content')
-
+@include('partials.subheader')
 <div class="card">
-    <div class="card-header">
+    <!--div class="card-header">
         {{ trans('global.create') }} {{ trans('cruds.role.title_singular') }}
-    </div>
+    </div-->
 
     <div class="card-body">
         <form method="POST" action="{{ route("admin.roles.store") }}" enctype="multipart/form-data">
@@ -51,7 +51,7 @@
                     <tbody>
                         
                         @foreach($grpTitle as $id=>$label )
-                            
+                            @if ($label['is_hidden'] == "0") 
                             <tr>
                                 <td>
                                     @if ($label['is_parent'] == "1") 
@@ -123,6 +123,7 @@
                                     @endif
                                 </td>
                             </tr>
+                            @endif
                         @endforeach
                         
                     </tbody>

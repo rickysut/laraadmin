@@ -1,10 +1,10 @@
 @extends('layouts.admin')
 @section('content')
-
+@include('partials.subheader')
 <div class="card">
-    <div class="card-header">
+    <!--div class="card-header">
         {{ trans('global.create') }} {{ trans('cruds.user.title_singular') }}
-    </div>
+    </div-->
 
     <div class="card-body">
         <form method="POST" action="{{ route("admin.users.store") }}" enctype="multipart/form-data">

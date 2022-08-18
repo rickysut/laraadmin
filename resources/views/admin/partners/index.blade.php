@@ -26,7 +26,7 @@
                         <th width="10">
 
                         </th>
-                        <th>
+                        <th hidden>
                             {{ trans('cruds.partner.fields.id') }}
                         </th>
                         <th>
@@ -50,8 +50,8 @@
                         <th>
                             {{ trans('cruds.partner.fields.partner_pic') }}
                         </th>
-                        <th>
-                            &nbsp;
+                        <th style="width:15%">
+                            {{ trans('global.actions') }}
                         </th>
                     </tr>
                 </thead>
@@ -61,7 +61,7 @@
                             <td>
 
                             </td>
-                            <td>
+                            <td hidden>
                                 {{ $partner->id ?? '' }}
                             </td>
                             <td>
@@ -86,10 +86,10 @@
                                 {{ $partner->partner_pic ?? '' }}
                             </td>
                             <td>
-
+                               
                                 @can('partner_edit')
                                     <a class="btn btn-xs btn-info" href="{{ route('admin.partners.edit', $partner->id) }}">
-                                        {{ trans('global.edit') }}
+                                        <i class="fal fa-edit"></i>
                                     </a>
                                 @endcan
 
@@ -97,7 +97,7 @@
                                     <form action="{{ route('admin.partners.destroy', $partner->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
                                         <input type="hidden" name="_method" value="DELETE">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                        <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('global.delete') }}">
+                                        <button type="submit" class="btn btn-xs btn-danger" value="{{ trans('global.delete') }}"><i class="fas fa-trash"></i></button>
                                     </form>
                                 @endcan
 

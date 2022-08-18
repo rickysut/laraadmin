@@ -7,7 +7,7 @@
 	<div class="subheader-block d-lg-flex align-items-center">
 		<div class="d-inline-flex flex-column justify-content-center mr-3 text-right" data-toggle="tooltip" title data-original-title="waktu terakhir data diperbaharusi">
 			<span class="fw-300 fs-xs d-block opacity-50">
-				<small>{{ trans('simevi.today') }}</small>
+				<small>{{ trans('smartadmin.today') }}</small>
 			</span>
 			<span class="fw-500 fs-xl d-block color-danger-500">
 				<span class="text-muted text-truncate text-truncate-sm js-get-date"></span>

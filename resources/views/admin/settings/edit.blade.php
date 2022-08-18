@@ -1,10 +1,10 @@
 @extends('layouts.admin')
 @section('content')
-
+@include('partials.subheader')
 <div class="card">
-    <div class="card-header">
+    {{-- <div class="card-header">
         {{ trans('global.edit') }} {{ trans('cruds.setting.title_singular') }}
-    </div>
+    </div> --}}
 
     <div class="card-body">
         <form method="POST" action="{{ route("admin.settings.update", [$setting->id]) }}" enctype="multipart/form-data">
@@ -41,9 +41,12 @@
                 <span class="help-block">{{ trans('cruds.setting.fields.telepon_helper') }}</span>
             </div>
             <div class="form-group">
-                <button class="btn btn-danger" type="submit">
+                <button class="btn btn-success" type="submit">
                     {{ trans('global.save') }}
                 </button>
+                <a class="btn btn-danger" href="{{ route('admin.settings.index') }}">
+                    {{ trans('global.cancel') }}
+                </a>
             </div>
         </form>
     </div>

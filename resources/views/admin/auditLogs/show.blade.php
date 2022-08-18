@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('content')
-
+@include('partials.subheader')
 <div class="card">
     <!--div class="card-header">
         {{ trans('global.show') }} {{ trans('cruds.auditLog.title') }}

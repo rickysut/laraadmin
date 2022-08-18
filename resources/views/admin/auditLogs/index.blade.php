@@ -1,48 +1,63 @@
 @extends('layouts.admin')
 @section('content')
+@include('partials.subheader')
+@can('audit_log_access')
+<div class="row">
+	<div class="col-12">
+		<div id="panel-1" class="panel show" data-panel-sortable data-panel-close data-panel-collapsed>
+			<div class="panel-hdr">
+				<h2>
+					Data | <span class="fw-300"><i>{{ trans('cruds.auditLog.title') }}</i></span>
+				</h2>
+			</div>
+			<div class="panel-container show">
+				<div class="panel-content">
+					<div class="row">
+						<div class="col-12">
+							<div class="table dataTables_wrapper dt-bootstrap4">
+								<table class="dtr-inline table table-bordered table-striped table-hover ajaxTable datatable datatable-AuditLog w-100">
+									<thead  class="bg-primary-50">
 
-<div class="card">
-    <!--div class="card-header">
-        {{ trans('cruds.auditLog.title_singular') }} {{ trans('global.list') }}
-    </div-->
+                                        <tr>
+                                            <th width="10">
 
-    <div class="card-body">
-        <table class=" table table-bordered table-striped table-hover ajaxTable datatable datatable-AuditLog">
-            <thead>
-                <tr>
-                    <th width="10">
-
-                    </th>
-                    <th>
-                        {{ trans('cruds.auditLog.fields.id') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.auditLog.fields.description') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.auditLog.fields.subject_id') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.auditLog.fields.subject_type') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.auditLog.fields.user_id') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.auditLog.fields.host') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.auditLog.fields.created_at') }}
-                    </th>
-                    <th>
-                        &nbsp;
-                    </th>
-                </tr>
-            </thead>
-        </table>
+                                            </th>
+                                            <th>
+                                                {{ trans('cruds.auditLog.fields.id') }}
+                                            </th>
+                                            <th>
+                                                {{ trans('cruds.auditLog.fields.description') }}
+                                            </th>
+                                            <th>
+                                                {{ trans('cruds.auditLog.fields.subject_id') }}
+                                            </th>
+                                            <th>
+                                                {{ trans('cruds.auditLog.fields.subject_type') }}
+                                            </th>
+                                            <th>
+                                                {{ trans('cruds.auditLog.fields.user_id') }}
+                                            </th>
+                                            <th>
+                                                {{ trans('cruds.auditLog.fields.host') }}
+                                            </th>
+                                            <th>
+                                                {{ trans('cruds.auditLog.fields.created_at') }}
+                                            </th>
+                                            <th>
+                                                {{ trans('global.actions') }}
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
-
+@endcan
 
 
 @endsection

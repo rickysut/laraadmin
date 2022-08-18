@@ -1,10 +1,10 @@
 @extends('layouts.admin')
 @section('content')
-
+@include('partials.subheader')
 <div class="card">
-    <div class="card-header">
+    <!--div class="card-header">
         {{ trans('global.create') }} {{ trans('cruds.permission.title_singular') }}
-    </div>
+    </div-->
 
     <div class="card-body">
         <form method="POST" action="{{ route("admin.permissions.store") }}" enctype="multipart/form-data">
@@ -39,7 +39,9 @@
                 <select class="form-control {{ $errors->has('grp_title') ? 'is-invalid' : '' }}" name="grp_title" id="grp_title" required>
                     <option value disabled {{ old('grp_title', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
                     @foreach($grpTitle as $key => $label)
-                        <option value="{{ $label['title'] }}" {{ old('grp_title', '') === $label['title'] ? 'selected' : '' }}>{{ $label['title'] }}</option>
+                        @if ($label['is_hidden']=='0')
+                            <option value="{{ $label['title'] }}" {{ old('grp_title', '') === $label['title'] ? 'selected' : '' }}>{{ $label['title'] }}</option>    
+                        @endif
                     @endforeach
                 </select>
                 @if($errors->has('grp_title'))

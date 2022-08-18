@@ -39,10 +39,15 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.setting.fields.telepon_helper') }}</span>
             </div>
+            
             <div class="form-group">
-                <button class="btn btn-danger" type="submit">
+                <button class="btn btn-success" type="submit">
                     {{ trans('global.save') }}
                 </button>
+                <a class="btn btn-danger" href="{{ route('admin.settings.index') }}">
+                    {{ trans('global.cancel') }}
+                </a>
+                
             </div>
         </form>
     </div>

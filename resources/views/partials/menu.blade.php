@@ -26,7 +26,7 @@
         <ul id="js-nav-menu" class="nav-menu">
             @can('dashboard_access')
             <li class="c-sidebar-nav-item">
-                <a href="{{ route("admin.home") }}" class="c-sidebar-nav-link">
+                <a href="{{ route("admin.home") }}" class="c-sidebar-nav-link" data-filter-tags="{{ strtolower(trans('global.dashboard')) }}">
                     <i class="c-sidebar-nav-icon fas fa-fw fa-tachometer-alt">
 
                     </i>
@@ -40,8 +40,8 @@
         <li class="nav-title" data-i18n="nav.master_data">DATA INDUK (master)</li>
             <li>
                 @can('partner_access')
-                    <li class="c-sidebar-nav-item">
-                        <a href="{{ route("admin.partners.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/partners") || request()->is("admin/partners/*") ? "c-active" : "" }}">
+                    <li class="c-sidebar-nav-item {{ request()->is("admin/partners") || request()->is("admin/partners/*") ? "c-active" : "" }}">
+                        <a href="{{ route("admin.partners.index") }}" data-filter-tags="{{ strtolower(trans('cruds.partner.title')) }}">
                             <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
 
                             </i>
@@ -50,8 +50,8 @@
                     </li>
                 @endcan
                 @can('coa_access')
-                    <li class="c-sidebar-nav-item">
-                        <a href="{{ route("admin.coas.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/coas") || request()->is("admin/coas/*") ? "c-active" : "" }}">
+                    <li class="c-sidebar-nav-item {{ request()->is("admin/coas") || request()->is("admin/coas/*") ? "c-active" : "" }}">
+                        <a href="{{ route("admin.coas.index") }}" data-filter-tags="{{ strtolower(trans('cruds.coa.title')) }}">
                             <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
 
                             </i>
@@ -107,8 +107,8 @@
         @endcan
         
         @can('setting_access')
-            <li class="c-sidebar-nav-item">
-                <a href="{{ route("admin.settings.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/settings") || request()->is("admin/settings/*") ? "c-active" : "" }}">
+            <li class="c-sidebar-nav-item {{ request()->is("admin/settings") || request()->is("admin/settings/*") ? "c-active" : "" }}">
+                <a href="{{ route("admin.settings.index") }}" data-filter-tags="{{ strtolower(trans('cruds.setting.title')) }}">
                     <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
 
                     </i>
@@ -119,8 +119,8 @@
         
         
         @php($unread = \App\Models\QaTopic::unreadCount())
-            <li class="c-sidebar-nav-item">
-                <a href="{{ route("admin.messenger.index") }}" class="{{ request()->is("admin/messenger") || request()->is("admin/messenger/*") ? "c-active" : "" }} c-sidebar-nav-link">
+            <li class="c-sidebar-nav-item {{ request()->is("admin/messenger") || request()->is("admin/messenger/*") ? "c-active" : "" }}">
+                <a href="{{ route("admin.messenger.index") }}" data-filter-tags="{{ strtolower(trans('global.messages')) }}">
                     <i class="c-sidebar-nav-icon fa-fw fa fa-envelope">
 
                     </i>
@@ -133,8 +133,8 @@
             </li>
             @if(file_exists(app_path('Http/Controllers/Auth/ChangePasswordController.php')))
                 @can('profile_password_edit')
-                    <li class="c-sidebar-nav-item">
-                        <a class="c-sidebar-nav-link {{ request()->is('profile/password') || request()->is('profile/password/*') ? 'c-active' : '' }}" href="{{ route('profile.password.edit') }}">
+                    <li class="c-sidebar-nav-item {{ request()->is('profile/password') || request()->is('profile/password/*') ? 'c-active' : '' }}" >
+                        <a href="{{ route('profile.password.edit') }}" data-filter-tags="{{ strtolower(trans('global.change_password')) }}">
                             <i class="fa-fw fas fa-key c-sidebar-nav-icon">
                             </i>
                             {{ trans('global.change_password') }}

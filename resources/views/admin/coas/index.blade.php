@@ -15,7 +15,7 @@
     </div>
 
     <div class="card-body">
-        <table class=" table table-bordered table-striped table-hover ajaxTable datatable datatable-Coa">
+        <table class=" table table-bordered table-striped table-hover ajaxTable datatable datatable-Coa w-100">
             <thead>
                 <tr>
                     <th width="10">
@@ -33,8 +33,8 @@
                     <th>
                         {{ trans('cruds.coa.fields.coa_parent') }}
                     </th>
-                    <th>
-                        &nbsp;
+                    <th style="width:15%">
+                        {{ trans('global.actions') }}
                     </th>
                 </tr>
             </thead>

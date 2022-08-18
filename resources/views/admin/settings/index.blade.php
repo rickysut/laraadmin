@@ -1,44 +1,57 @@
 @extends('layouts.admin')
 @section('content')
-@can('setting_create')
-    <div style="margin-bottom: 10px;" class="row">
-        <div class="col-lg-12">
-            <a class="btn btn-success" href="{{ route('admin.settings.create') }}">
-                {{ trans('global.add') }} {{ trans('cruds.setting.title_singular') }}
-            </a>
-        </div>
-    </div>
-@endcan
-<div class="card">
-    <div class="card-header">
-        {{ trans('cruds.setting.title_singular') }} {{ trans('global.list') }}
-    </div>
+@include('partials.subheader')
+<div class="row">
+	<div class="col-12">
+	  <div id="panel-1" class="panel show" data-panel-sortable data-panel-close data-panel-collapsed>
+		  <div class="panel-hdr">
+				<h2>
+					Data | <span class="fw-300"><i>{{ trans('cruds.setting.title') }}</i></span>
+				</h2>
+                @can('setting_create')
+				<div class="panel-toolbar">
+					<a class="btn btn-success btn-xs mr-2" href="{{ route('admin.settings.create') }}" data-toggle="tooltip" title="tambah data" data-original-title="tambah data">
+						{{ trans('global.add') }} {{ trans('cruds.setting.title_singular') }}
+					</a>
+				</div>
+				@endcan
+			</div>
+			<div class="panel-container show">
+			  <div class="panel-content">
+					<div class="row">
+						<div class="col-12">
+							<div class="table dataTables_wrapper dt-bootstrap4">
 
-    <div class="card-body">
-        <table class=" table table-bordered table-striped table-hover ajaxTable datatable datatable-Setting">
-            <thead>
-                <tr>
-                    <th width="10">
+                                <table class=" table table-bordered table-striped table-hover ajaxTable datatable datatable-Setting w-100">
+                                    <thead>
+                                        <tr>
+                                            <th width="10">
 
-                    </th>
-                    <th>
-                        {{ trans('cruds.setting.fields.id') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.setting.fields.nm_org') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.setting.fields.alamat') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.setting.fields.telepon') }}
-                    </th>
-                    <th>
-                        &nbsp;
-                    </th>
-                </tr>
-            </thead>
-        </table>
+                                            </th>
+                                            <th style="display: none">
+                                                {{ trans('cruds.setting.fields.id') }}
+                                            </th>
+                                            <th>
+                                                {{ trans('cruds.setting.fields.nm_org') }}
+                                            </th>
+                                            <th>
+                                                {{ trans('cruds.setting.fields.alamat') }}
+                                            </th>
+                                            <th>
+                                                {{ trans('cruds.setting.fields.telepon') }}
+                                            </th>
+                                            <th style="width:15%">
+                                                {{ trans('global.actions') }}
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+      </div>
     </div>
 </div>
 
@@ -89,11 +102,11 @@
     ajax: "{{ route('admin.settings.index') }}",
     columns: [
       { data: 'placeholder', name: 'placeholder' },
-{ data: 'id', name: 'id' },
-{ data: 'nm_org', name: 'nm_org' },
-{ data: 'alamat', name: 'alamat' },
-{ data: 'telepon', name: 'telepon' },
-{ data: 'actions', name: '{{ trans('global.actions') }}' }
+      { data: 'id', name: 'id', visible: false},
+      { data: 'nm_org', name: 'nm_org' },
+      { data: 'alamat', name: 'alamat' },
+      { data: 'telepon', name: 'telepon' },
+      { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
     orderCellsTop: true,
     order: [[ 1, 'desc' ]],

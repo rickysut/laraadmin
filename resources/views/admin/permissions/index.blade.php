@@ -1,42 +1,55 @@
 @extends('layouts.admin')
 @section('content')
-@can('permission_create')
-    <div style="margin-bottom: 10px;" class="row">
-        <div class="col-lg-12">
-            <a class="btn btn-success" href="{{ route('admin.permissions.create') }}">
-                {{ trans('global.add') }} {{ trans('cruds.permission.title_singular') }}
-            </a>
+@include('partials.subheader')
+<div class="row">
+	<div class="col-12">
+	  <div id="panel-1" class="panel show" data-panel-sortable data-panel-close data-panel-collapsed>
+		  <div class="panel-hdr">
+				<h2>
+					Data | <span class="fw-300"><i>{{ trans('cruds.permission.title') }}</i></span>
+				</h2>
+				@can('permission_create')
+				<div class="panel-toolbar">
+					<a class="btn btn-success btn-xs mr-2" href="{{ route('admin.permissions.create') }}" data-toggle="tooltip" title="tambah data" data-original-title="tambah data">
+						{{ trans('global.add') }} {{ trans('cruds.permission.title_singular') }}
+					</a>
+				</div>
+				@endcan
+			</div>
+			<div class="panel-container show">
+			  <div class="panel-content">
+					<div class="row">
+						<div class="col-12">
+							<div class="table dataTables_wrapper dt-bootstrap4">
+								<table class="dtr-inline table table-bordered table-striped table-hover ajaxTable datatable datatable-Permission w-100">
+									<thead  class="bg-primary-50">
+
+                    <tr>
+                      <th width="10">
+
+                      </th>
+                      <th>
+                          {{ trans('cruds.permission.fields.title') }}
+                      </th>
+                      <th>
+                          {{ trans('cruds.permission.fields.perm_type') }}
+                      </th>
+                      <th>
+                          {{ trans('cruds.permission.fields.grp_title') }}
+                      </th>
+                      <th style="width:15%">
+                          {{ trans('global.actions') }}
+                      </th>
+                    </tr>
+                  </thead>
+                </table>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
-@endcan
-<div class="card">
-    <div class="card-header">
-        {{ trans('cruds.permission.title_singular') }} {{ trans('global.list') }}
-    </div>
-
-    <div class="card-body">
-        <table class=" table table-bordered table-striped table-hover ajaxTable datatable datatable-Permission">
-            <thead>
-                <tr>
-                    <th width="10">
-
-                    </th>
-                    <th>
-                        {{ trans('cruds.permission.fields.title') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.permission.fields.perm_type') }}
-                    </th>
-                    <th>
-                        {{ trans('cruds.permission.fields.grp_title') }}
-                    </th>
-                    <th>
-                        {{ trans('global.actions') }}
-                    </th>
-                </tr>
-            </thead>
-        </table>
-    </div>
+  </div>
 </div>
 
 
@@ -52,7 +65,7 @@
   let deleteButton = {
     text: deleteButtonTrans,
     url: "{{ route('admin.permissions.massDestroy') }}",
-    className: 'btn-danger',
+    className: 'btn-danger btn-sm mr-1',
     action: function (e, dt, node, config) {
       var ids = $.map(dt.rows({ selected: true }).data(), function (entry) {
           return entry.id
