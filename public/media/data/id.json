@@ -1,0 +1,52 @@
+{
+  "app": {
+    "name": "Smartadmin"
+  },
+  "nav": {
+    "monitoring_analysis": "PEMANTAUAN & ANALISA",
+    "monitoring_analysis_sub1": "Dashboard Pemantauan",
+    "monitoring_analysis_sub1_menu1": "Dashboard",
+    "monitoring_analysis_sub1_menu2": "Ringkasan Eksekutif",
+    "monitoring_analysis_sub2" : "Dashboard Analisa",
+    "monitoring_analysis_sub2_menu1" : "Nilai Kinerja Percepatan",
+    "sub_application": "SUB-APLIKASI",
+    "sub_application_sub1": "App Anggaran",
+    "sub_application_sub1_menu1": "Data Renja",
+    "sub_application_sub1_menu2": "Data Pagu",
+    "sub_application_sub1_menu3": "Data Realisasi",
+    "sub_application_sub2": "App Banpem",
+    "sub_application_sub2_menu1": "Data Banpem",
+    "master_data": "DATA INDUK (MASTER)",
+    "master_data_sub1": "Data 526",
+    "master_data_sub1_menu1": "Realisasi Belanja 526",
+    "master_data_sub2": "Akun Belanja",
+    "master_data_sub3": "Data Wilayah",
+    "master_data_sub3_menu1": "Provinsi",
+    "master_data_sub3_menu2": "Kabupaten",
+    "master_data_sub3_menu3": "Kecamatan",
+    "master_data_sub3_menu4": "Desa",
+    "master_data_sub4": "Satker",
+    "master_data_sub5": "Rincian Output",
+    "master_data_sub6": "Master Kegiatan",
+    "administation" : "ADMINISTRATOR",
+    "administation_sub1" : "Manajemen Pengguna",
+    "administation_sub1_menu1" : "Akses",
+    "administation_sub1_menu2" : "Hak Pengguna",
+    "administation_sub1_menu3" : "Pengguna",
+    "administation_sub1_menu4" : "Audit Logs",
+    "administation_sub2" : "Pesan",
+    "administation_sub3" : "Ganti Password",
+    "documentation" : "DOKUMENTASI",
+    "documentation_sub1" : "Versi Aplikasi",
+    "documentation_sub2" : "Manual Umum",
+    "documentation_sub3" : "Manual REST-API"
+  },
+  "drpdwn": {
+    "reset_layout": "Ulang Tataletak",
+    "settings": "Pengaturan",
+    "fullscreen": "Layar Penuh",
+    "print": "Cetak",
+    "lang": "Bahasa",
+    "page-logout": "Keluar"
+  }  
+}

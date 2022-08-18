@@ -35,6 +35,13 @@ class LoginController extends Controller
      */
     public function __construct()
     {
+        if (config('panel.primary_language')) {
+            $language = config('panel.primary_language');
+        }
+
+        if (isset($language)) {
+            app()->setLocale($language);
+        }
         $this->middleware('guest')->except('logout');
     }
 }

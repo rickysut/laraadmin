@@ -322,4 +322,5 @@ return [
     'leave'                          => 'Keluar',
     'calendar'                       => 'Kalender',
     'messenger'                      => 'Pesan',
+    'login_username'                 => 'User ID',
 ];

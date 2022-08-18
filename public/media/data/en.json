@@ -1,0 +1,52 @@
+{
+  "app": {
+    "name": "Smartadmin"
+  },
+  "nav": {
+    "monitoring_analysis": "MONITORING & ANALYSIS",
+    "monitoring_analysis_sub1": "Monitoring Dashboard",
+    "monitoring_analysis_sub1_menu1": "Dashboard",
+    "monitoring_analysis_sub1_menu2": "Executive Summary",
+    "monitoring_analysis_sub2" : "Dashboard Analysis",
+    "monitoring_analysis_sub2_menu1" : "Acceleration Performance Value",
+    "sub_application": "SUB-APPLICATION",
+    "sub_application_sub1": "Budget App",
+    "sub_application_sub1_menu1": "Renja Datas",
+    "sub_application_sub1_menu2": "Pagu Datas",
+    "sub_application_sub1_menu3": "Realization Datas",
+    "sub_application_sub2": "Banpem App",
+    "sub_application_sub2_menu1": "Banpem Datas",
+    "master_data": "MASTER DATA",
+    "master_data_sub1": "526 Datas",
+    "master_data_sub1_menu1": "Actual Spend 526",
+    "master_data_sub2": "Spend Account",
+    "master_data_sub3": "Region Data",
+    "master_data_sub3_menu1": "Province",
+    "master_data_sub3_menu2": "Regency",
+    "master_data_sub3_menu3": "Subdistrict",
+    "master_data_sub3_menu4": "Villages",
+    "master_data_sub4": "Work unit",
+    "master_data_sub5": "Output Detail",
+    "master_data_sub6": "Master of Activities",
+    "administation" : "ADMINISTRATOR",
+    "administation_sub1" : "Users Management",
+    "administation_sub1_menu1" : "Permissions",
+    "administation_sub1_menu2" : "Roles",
+    "administation_sub1_menu3" : "Users",
+    "administation_sub1_menu4" : "Audit Logs",
+    "administation_sub2" : "Messages",
+    "administation_sub3" : "Change Password",
+    "documentation" : "DOCUMENTATIONS",
+    "documentation_sub1" : "Build Control",
+    "documentation_sub2" : "General Docs",
+    "documentation_sub3" : "REST-API Docs"
+  },
+  "drpdwn": {
+    "reset_layout": "Reset Layout",
+    "settings": "Settings",
+    "fullscreen": "Full Screen",
+    "print": "Print",
+    "lang": "Language",
+    "page-logout": "Logout"
+  }  
+}
